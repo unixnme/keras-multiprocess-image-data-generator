@@ -1,0 +1,12 @@
+cycler
+functools32
+matplotlib
+numpy
+nvidia-ml-py
+pkg-resources
+psutil
+pyparsing
+python-dateutil
+pyt
+six
+subprocess32
