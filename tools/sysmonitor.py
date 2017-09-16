@@ -24,8 +24,6 @@ def gpu_info():
         info.append((i, desc, util.gpu)) #['GPU %i - %s' % (i, desc)] = util.gpu
     return info
 
-utils = []
-
 class SysMonitor(threading.Thread):
     shutdown = False
 
@@ -36,7 +34,6 @@ class SysMonitor(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        utils = []
         while not self.shutdown:
             dt = datetime.datetime.now()
             util = gpu_info()
@@ -61,3 +58,12 @@ class SysMonitor(threading.Thread):
         ax[1].plot([u[2] for u in self.utils])
         ax[1].set_ylim([0, 100])
         plt.tight_layout(rect=[0, 0.03, 1, 0.9])
+        plt.show()
+
+if __name__ == '__main__':
+    t1 = SysMonitor()
+    t1.start()
+    time.sleep(10)
+    t1.stop()
+    t1.plot('System Resources Usage')
+
